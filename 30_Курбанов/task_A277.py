@@ -23,13 +23,13 @@ def goldbach(n):
         return d * d > n
 
     if n == 4:
-        return print([2, 2])
+        return [2, 2]
     elif n % 2 or n < 4:
-        return print([])
+        return []
     k = 3
     while True:
         if isPrime(k) and isPrime(n - k):
-            return print([k, n - k])
+            return [k, n - k]
         k += 2
 
 
