@@ -22,3 +22,63 @@
 Предусмотреть хотя бы в 3 местах обработку возможных исключений.
 В каждом модуле провести подробное тестирование всех создаваемых объектов и функций.
 """
+
+class Car:
+
+    def __init__(self, mark, power, production_year, d):
+        self.mark = mark 
+        self.power = power 
+        self.production_year = production_year
+        self.d = d 
+
+    def print(self):
+        print(f"""
+        Mark: {self.mark},
+        Power: {self.power},
+        Production year: {self.production_year}
+        D: {self.d}""")
+
+a = Car("Volvo", 560, 2015, {'колеса': 2016})            
+a.print()
+
+class PassengerCar(Car):
+    def __init__(self, number_of_passengers, repair_book):
+        super().__init__()
+
+        self.number_of_passenger = number_of_passengers
+        self.repair_book = repair_book
+
+    def replace_spare_part(self, space_part):
+
+        new_info = {}
+        pass
+
+    def get_replacement_year(self, year):
+        pass
+
+
+    def print_info(self):
+        pass
+
+
+class Truck(Car):
+    
+    def __init__(self, maximum_capacity, name_surname, current_cargo):
+        super.__init__
+
+        self.maximum_capacity = maximum_capacity
+        self.name_surname = name_surname 
+        self.current_cargo = current_cargo
+
+    def change_driver(self, new_driver):
+        self.name_surname = new_driver
+    
+    def unload(self):
+        self.current_cargo.clear()
+
+    def load(self):
+        pass    
+
+
+
+        
