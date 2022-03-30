@@ -10,18 +10,18 @@ import traceback
 
 
 def sentence(s):
-   #sorted_list = sorted(s, key=lambda x: list(map(int, x)))
-    # big_dick = {}
-    # for dic in s:
-    #     big_dick.update(dic)
-    # l = []
-    # for key in big_dick:
-    #     l.append(int(key))
-    # l.sort()
-    # l2 = []
-    # for item in l:
-    #     l2.append(big_dick[str(item)])
-    # return ' '.join(l2)
+   sorted_list = sorted(s, key=lambda x: list(map(int, x)))
+   big_dick = {}
+   for dic in s:
+      big_dick.update(dic)
+   l = []
+   for key in big_dick:
+      l.append(int(key))
+      l.sort()
+   l2 = []
+   for item in l:
+      l2.append(big_dick[str(item)])
+   return ' '.join(l2)
 
 
 #Тесты
