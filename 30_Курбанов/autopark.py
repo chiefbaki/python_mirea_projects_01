@@ -1,69 +1,80 @@
-from passengercar import PassengerCar
-from truck import Truck
-from passengercar import mers, bmw
-from truck import volvo, daf
+from truck import *
+from passengercar import *
 
 
 class AutoPark:
-
+    __f = 'wefff'
     def __init__(self, name_of_autopark):
         super().__init__()
         self.name_of_autopark = name_of_autopark
-        self.__passengerscar = []
-        self.__trucks = []
-        self.list_of_car = []
+        self._passengerscar = []
+        self._trucks = []
+        self.__list_of_cars = []
 
     def __str__(self):
         return f"""
         Name of autopark: {self.name_of_autopark},
-        List of cars: {[i for i in self.passengers()]}, 
+        List of cars: {self.passengers()}, 
         List of trucks: {self.trucks_()}"""
 
     def passengers(self):
         try:
-            for obj in self.__passengerscar:
-                return obj
+            s = ''
+            for obj in self._passengerscar:
+                s += str(obj)
+            return s
         except SyntaxError and ValueError as arr:
             print(f"Error check again: {arr}")
 
     def trucks_(self):
         try:
-            for obj in self.__trucks:
-                return obj
+            b = ''
+            for obj in self._trucks:
+                b += str(obj)
+            return str(b)
         except SyntaxError and ValueError as arr:
             print(f"Error check again: {arr}")
 
-    def add_passenger(self, passenger, trucks):
+    def add_car(self, p1):
         #if isinstance(passenger, PassengerCar):
-            self.__passengerscar.append(passenger)
+        self._passengerscar.append(p1)
         #if isinstance(trucks, Truck):
-            self.__trucks.append(trucks)
 
-    def add_list(self):
-        self.list_of_car.append(self.__trucks)
-        self.list_of_car.append(self.__passengerscar)
+    def add_truck(self, trucks):
+        self._trucks.append(trucks)
 
     def __len__(self):
-        return len(self.__trucks)
+        return len(self._trucks)
+
+    def getter(self):
+        for i in self._trucks:
+            print(i)
 
     def __getitem__(self, get_el):
-        return self.list_of_car[get_el]
+        return self._trucks[get_el]
 
-    # def __getitem__(self, get_el):
-    #     return self.__passengerscar[get_el]
+    def __delitem__(self, del_item):
+        return self._trucks.pop(del_item)
+
+    def __setitem__(self, key, value):
+        self._trucks[key] = value
 
     def __sub__(self, del_el):
-        del self.__trucks[del_el]
+        del self._trucks[del_el]
 
     def del_car(self, del_el):
-        del self.__passengerscar[del_el]
+        del self._passengerscar[del_el]
 
 
 if __name__ == '__main__':
 
     u = AutoPark('Fiyetville')
-    u.add_passenger([mers, bmw], [volvo, daf])
-    # u.add_passenger(bmw, daf)
-    u.add_list()
-    print(u['Volvo'])
+    u.add_car(bmw)
+    u.add_car(mers)
+    u.add_truck(volvo)
+    u.add_truck(daf)
+    u.add_truck(ford)
+
+    s = u.getter()
+    print(s)
 

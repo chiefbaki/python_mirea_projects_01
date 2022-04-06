@@ -53,6 +53,6 @@ if __name__ == '__main__':
 
     volvo + {'coat': 5000}
     daf + {'coat': 5000}
+    daf + {'prezervativy': 20000}
     volvo + {'shoes': 5000}
-    print(volvo)
-    print(daf)
+    print()
