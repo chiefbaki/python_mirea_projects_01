@@ -1,8 +1,7 @@
 # import requests
 # import math
 # from pprint import pprint
-
-
+#ghbdtn
 class Weather:
 
     city = 'Moscow'
