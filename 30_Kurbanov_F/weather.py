@@ -2,6 +2,7 @@
 # import math
 # from pprint import pprint
 #ghbdtn
+#privet
 class Weather:
 
     city = 'Moscow'
