@@ -10,7 +10,7 @@
 
 def main():
 
-    vk_session = vk_api.VkApi(token='870b2c8d1775f1d790bf896c1c1645aa351d837685b5ff2db52a853a4069ee542e4d8225b1f15a9704f11')
+    vk_session = vk_api.VkApi(token='token')
     vk = vk_session.get_api()
     longpoll = VkLongPoll(vk_session)
 
