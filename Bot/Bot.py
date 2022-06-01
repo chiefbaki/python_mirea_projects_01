@@ -10,6 +10,7 @@ import requests
 
 # Сторонние библиотеки
 import vk_api
+from config import token
 from bs4 import BeautifulSoup
 from vk_api import VkUpload
 from vk_api.keyboard import VkKeyboard, VkKeyboardColor
@@ -19,6 +20,7 @@ from PIL import Image, ImageDraw, ImageFont
 from urllib.request import urlopen
 
 # Самописные модули
+from five_day_weather import TodayWeather
 from helper import *
 from database import *
 from weather import *
@@ -29,7 +31,7 @@ class VkBot:
         """
         Конструктор
         """
-        self.vk_session = vk_api.VkApi(token='9dfbe5b54005cdb0be6fbd84133db0e023a690cab09d7fb13241195a6b537379c2e0b17ae8d09edf331ee')
+        self.vk_session = vk_api.VkApi(token=token)
         self.vk = self.vk_session.get_api()
         self.longpoll = VkLongPoll(self.vk_session)
         self.users_to_set_group: set = set()
@@ -263,7 +265,7 @@ class VkBot:
         Возвращает расписание преподавателя на указанную неделю
         """
         now = date.isocalendar()
-        week = now.week + scfg.WEEK_DELTA
+        week = now.week - 5
         week_even = (week + 1) % 2  # Является ли неделя чётной
         out = []
         tmp = []
@@ -335,7 +337,7 @@ class VkBot:
         """
         Возвращает статистику коронавируса на последние 10 дней
         """
-        page = requests.get(scfg.CORONA_STAT_URL + '/country/russia')  # Получаем страницу
+        page = requests.get('https://coronavirusstat.ru' + '/country/russia')  # Получаем страницу
         soup = BeautifulSoup(page.text, "html.parser")  # Парсим её
         result = soup.find('table', {'class': 'table table-bordered small'}).findAll('tr')
         days = []
